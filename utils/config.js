@@ -1,14 +1,17 @@
 require('dotenv').config()
 
-let DOMAIN = process.env.REACT_APP_DOMAIN
-let CLIENTID = process.env.REACT_APP_CLIENTID
-let AUDIENCE = process.env.REACT_APP_AUDIENCE
+const DOMAIN = process.env.REACT_APP_DOMAIN
+const CLIENTID = process.env.REACT_APP_CLIENTID
+const AUDIENCE = process.env.REACT_APP_AUDIENCE
+const THEMOVIEDB = process.env.REACT_APP_THEMOVIEDB_KEY
 
-let PORT = 3001
+const PORT = 3001
 
 module.exports = {
 	DOMAIN,
 	CLIENTID,
 	AUDIENCE,
-  	PORT
+	PORT,
+	AUDIENCE,
+	THEMOVIEDB
 }
