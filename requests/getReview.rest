@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/moviesreview/userrating/98567
+GET http://localhost:3001/api/reviews/98567
 Content-Type: application/json
 
 {

@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
 const reviewSchema = new mongoose.Schema({
+	creation_date: {
+		type: Date,
+		default: Date.now
+	},
 	movie_id: {
 		type: Number,
 		required: true
@@ -9,13 +13,15 @@ const reviewSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	rating: Number
+	rating: Number,
+	comment: String
 })
 
 reviewSchema.set('toJSON', {
 	transform: (document, returnedObj) => {
 	  returnedObj.id = returnedObj._id.toString()
 	  delete returnedObj._id
+	  delete returnedObj.__v
 	}
 })
 

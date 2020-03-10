@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/reviews/98567/save
+Content-Type: application/json
+
+{
+	"email": "catalinamn@hotmail.com",
+	"rating": 3,
+	"comment": "The ending was good though"
+}

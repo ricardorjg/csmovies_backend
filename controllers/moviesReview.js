@@ -2,47 +2,27 @@ const moviesReviewRouter = require('express').Router()
 
 const config = require('../utils/config')
 const Review = require('../models/Review')
-const Comment = require('../models/Comment')
 
-moviesReviewRouter.post('/userrating/:movieid', async(req, res, next) => {
+moviesReviewRouter.get('/:movieid', async(req, res, next) => {
+	const movie_id = req.params.movieid
+	const reviews = await Review.find({ movie_id: movie_id })
+	res.status(200).json(reviews)
+})
 
+moviesReviewRouter.post('/:movieid/save', async(req, res, next) => {
+
+	const movie_id = req.params.movieid
 	const body = req.body
 
-	const filter = {
-		movie_id: req.params.movieid,
-		email: body.email
-	}
+	const review = new Review({
+		email: body.email,
+		movie_id: movie_id,
+		rating: body.rating,
+		comment: body.comment
+	})
 
-	const review = await Review.findOne(filter)
-	res.status(200).json(review)
+	const savedReview = await review.save()
+	res.status(200).json(savedReview)
 })
-
-moviesReviewRouter.get('/comments/:movieid', async(req, res, next) => {
-	const movieid = req.params.movieid
-	const comments = await Comment.find({ movie_id: parseInt(movieid) })
-	res.status(200).json(comments)
-})
-
-// moviesReviewRouter.post('/:movieid', async (req, res, next) => {
-
-// 	const body = req.body
-// 	const movie_id = req.params.movie_id
-
-// 	const reviewDB = await Review.findOne({ movie_id })
-
-// 	if (!reviewDB) {
-// 		reviewDB = new Review({
-// 			movie_id,
-// 			rating: body.rating || 0,
-// 			comments: [] 
-// 		})
-// 	}
-
-// 	if (body.comment && body.email) {
-// 		reviewDB.comments = reviewDB.comments.concat()
-// 	}
-
-// 	reviewDB.
-// })
 
 module.exports = moviesReviewRouter
