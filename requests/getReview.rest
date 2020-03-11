@@ -1,6 +1,1 @@
 GET http://localhost:3001/api/reviews/98567
-Content-Type: application/json
-
-{
-	"email": "swift_as_any_arrow@hotmail.com"
-}
