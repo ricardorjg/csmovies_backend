@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/reviews/98567/save
+Content-Type: application/json
+
+{
+	"rating": 3,
+	"comment": "The ending was good though"
+}

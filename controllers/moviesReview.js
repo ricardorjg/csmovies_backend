@@ -21,8 +21,12 @@ moviesReviewRouter.post('/:movieid/save', async(req, res, next) => {
 		comment: body.comment
 	})
 
-	const savedReview = await review.save()
-	res.status(200).json(savedReview)
+	try {
+		const savedReview = await review.save()
+		res.status(200).json(savedReview)
+	} catch (err)  {
+		next(err)
+	}
 })
 
 module.exports = moviesReviewRouter

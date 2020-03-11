@@ -3,9 +3,11 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const config = require('./utils/config')
-const checkJwt = require('./utils/middleware')
+const checkJwt = require('./utils/checkJwt')
 const moviesDbRouter = require('./controllers/moviesDb')
 const moviesReviewRouter = require('./controllers/moviesReview')
+const unknownEndpoint = require('./utils/unknownEndpoint')
+const errorHandler = require('./utils/errorHandler')
 
 mongoose
 	.connect(config.MONGODB_URI, { useNewUrlParser: true })
@@ -27,5 +29,8 @@ app.use(bodyParser.json())
 
 app.use('/api/moviesdb/', moviesDbRouter)
 app.use('/api/reviews/', moviesReviewRouter)
+
+app.use(unknownEndpoint)
+app.use(errorHandler)
 
 module.exports = app
