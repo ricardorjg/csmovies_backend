@@ -11,7 +11,7 @@ moviesReviewRouter.get('/:movieid', async (req, res, next) => {
 
 moviesReviewRouter.post('/:movieid/save', async (req, res, next) => {
 
-	const movie_id = req.params.movieid
+	const movie_id = parseInt(req.params.movieid)
 	const body = req.body
 
 	try {

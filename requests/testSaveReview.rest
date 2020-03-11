@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/reviews/10195/save
+Content-Type: application/json
+
+{
+	"movie_id": 10195,
+	"email": "swift_as_any_arrow@hotmail.com",
+	"rating": "3",
+	"comment": "3.5 really"
+}

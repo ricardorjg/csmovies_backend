@@ -25,7 +25,7 @@ app.use(cors())
 app.use(express.static('build'))
 app.use(bodyParser.json())
 
-//app.use(checkJwt)
+app.use(checkJwt)
 
 app.use('/api/moviesdb/', moviesDbRouter)
 app.use('/api/reviews/', moviesReviewRouter)
