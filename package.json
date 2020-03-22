@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "cross-env NODE_ENV=production node index.js",
 		"watch": "cross-env NODE_ENV=development nodemon index.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "NODE_ENV=test jest --verbose --runInBand",
 		"build:ui": "rm -rf build && cd ../csmovies/ && npm run build --prod && cp -r build ../csmovies_backend"
 	},
 	"author": "ricardo jose gomez otero",
@@ -23,5 +23,9 @@
 		"mongoose": "^5.9.3",
 		"nodemon": "^2.0.2",
 		"npm-run-all": "^4.1.5"
+	},
+	"devDependencies": {
+		"jest": "^25.1.0",
+		"supertest": "^4.0.2"
 	}
 }
