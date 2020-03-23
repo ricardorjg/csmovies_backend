@@ -8,6 +8,8 @@ const moviesReviewRouter = require('./controllers/moviesReview')
 const unknownEndpoint = require('./utils/unknownEndpoint')
 const errorHandler = require('./utils/errorHandler')
 
+dbConnect()
+
 const app = express()
 const cors = require('cors')
 
